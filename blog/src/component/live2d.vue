@@ -51,7 +51,7 @@ onMounted(async () => {
         statusBar: { disable: true },
         models: [
             {
-                path: "/models/anon/model.json",
+                path: "/blog/dist/models/anon/model.json",
                 scale: 0.2,
                 volume: 0,
                 position: [60, 60],
