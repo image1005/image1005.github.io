@@ -1,11 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import NavBar from './components/NavBar.vue'
+import SiteFooter from './components/SiteFooter.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <NavBar />
+  <main class="main-content">
+    <router-view />
+  </main>
+  <SiteFooter />
 </template>
 
-<style scoped></style>
+<style scoped>
+.main-content {
+  min-height: calc(100vh - var(--nav-height) - 140px);
+}
+</style>
