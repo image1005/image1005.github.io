@@ -1,0 +1,30 @@
+var e=[{slug:`测试文章`,title:`测试文章`,nodeType:`note`,content:`\r
+这是一篇测试文章，用来验证中文分词搜索功能是否正常工作。\r
+`,tags:[`测试`,`Vue`],parentSlug:null,sortOrder:0,filePath:`测试文章.md`,hash:`85420b7fe0555a5f7e4c9f23e8b401b5`,createdAt:`2026-07-09T14:57:47.525Z`,tokens:`测试.文章.这是.一篇.用来.验证.中文.分词.搜索.功能.是否.正常.工作.Vue.测.试.文.章.这.是.一.篇.用.来.验.证.中.分.词.搜.索.功.能.否.正.常.工.作.V.u.e`.split(`.`)},{slug:`hello`,title:`Hello World`,nodeType:`note`,content:`\r
+# 这是一篇测试文章\r
+\r
+这是用 **Markdown** 写的笔记内容。\r
+\r
+## 功能列表\r
+\r
+- ✅ 标题渲染\r
+- ✅ 列表展示\r
+- **加粗文字**\r
+- \`行内代码\`\r
+- [链接](https://example.com)\r
+\r
+> 引用块样式\r
+\r
+\`\`\`ts\r
+const msg: string = 'Hello World'\r
+console.log(msg)\r
+\`\`\`\r
+\r
+### 表格示例\r
+\r
+| 功能 | 状态 |\r
+|------|------|\r
+| 搜索 | ✅ |\r
+| Markdown | ✅ |\r
+| 看板娘 | ✅ |\r
+`,tags:[`Vue`,`Markdown`,`测试`],parentSlug:null,sortOrder:1,filePath:`hello.md`,hash:`d6cee3e4b20ab4d63b6691db0fab1676`,createdAt:`2026-07-09T15:09:13.822Z`,tokens:`Hello,World,这是,一篇,测试,文章,Markdown,笔记,内容,功能,列表,标题,渲染,展示,加粗,文字,代码,链接,https://example.com),引用,样式,ts,const,msg,string,console,log,表格,示例,状态,搜索,板娘,Vue,H,e,l,o,W,r,d,这,是,一,篇,测,试,文,章,用,M,a,k,w,n,写,的,笔,记,内,容,功,能,列,表,标,题,渲,染,展,示,加,粗,字,行,代,码,链,接,h,t,p,s,x,m,c,引,块,样,式,g,i,格,例,状,态,搜,索,看,板,娘,V,u`.split(`,`)},{slug:`test1`,title:`test1`,nodeType:`note`,content:`test1`,tags:[],parentSlug:null,sortOrder:2,filePath:`test1.md`,hash:`5a105e8b9d40e1329780d62ea2265d8a`,createdAt:`2026-07-09T12:58:30.563Z`,tokens:[`test`,`t`,`e`,`s`,`1`]},{slug:`test2`,title:`test2`,nodeType:`folder`,content:``,tags:[],parentSlug:null,sortOrder:3,createdAt:`2026-07-09T12:58:43.297Z`},{slug:`test2-test3`,title:`test3`,nodeType:`note`,content:``,tags:[],parentSlug:`test2`,sortOrder:0,filePath:`test2/test3.md`,hash:`d41d8cd98f00b204e9800998ecf8427e`,createdAt:`2026-07-09T12:58:50.761Z`,tokens:[`test`,`t`,`e`,`s`,`3`]}];export{e as default};
