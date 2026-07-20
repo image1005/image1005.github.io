@@ -1,3 +1,9 @@
+<script setup lang="ts">
+const base = import.meta.env.BASE_URL
+const 协会招新群 = `${base}images/协会招新群/157e841f8ff3b6e888518b8ea8a9302d.png`
+const 公众号 = `${base}images/公众号/93737850c43752445459bb32d86c2283.png`
+</script>
+
 <template>
   <div class="join-us">
     <!-- Page Header -->
@@ -24,10 +30,12 @@
             <p class="card__desc" style="margin-bottom: 20px">
               加入我们的QQ总群，获取最新活动资讯，与所有成员交流。
             </p>
-            <div
-              style="width: 140px; height: 140px; border-radius: 12px; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 0.85rem"
-            >
-              二维码占位
+            <div style="width: 220px; height: 220px; margin: 0 auto">
+              <img
+                :src="协会招新群"
+                alt="CNTA QQ总群二维码"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
             </div>
           </div>
 
@@ -39,7 +47,7 @@
               用技术传递温暖，参与电脑义诊、数字助老等志愿活动。
             </p>
             <div
-              style="width: 140px; height: 140px; border-radius: 12px; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 0.85rem"
+              style="width: 160px; height: 160px; border-radius: 12px; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; border: 1px solid"
             >
               二维码占位
             </div>
@@ -53,7 +61,7 @@
               与技术大牛一同成长，参与竞赛培训和前沿项目开发。
             </p>
             <div
-              style="width: 140px; height: 140px; border-radius: 12px; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 0.85rem"
+              style="width: 160px; height: 160px; border-radius: 12px; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; border: 1px solid"
             >
               二维码占位
             </div>
@@ -67,9 +75,13 @@
               关注我们的官方公众号，获取协会动态、技术干货和活动预告。
             </p>
             <div
-              style="width: 140px; height: 140px; border-radius: 12px; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 0.85rem"
+              style="width: 160px; height: 160px; border-radius: 12px; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; border: 1px solid"
             >
-              二维码占位
+              <img
+                :src="公众号"
+                alt="一如计网二维码"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
             </div>
           </div>
         </div>

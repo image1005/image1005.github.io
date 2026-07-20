@@ -25,7 +25,7 @@ function closeMenu() {
   <nav class="navbar">
     <div class="navbar__inner container">
       <RouterLink to="/" class="navbar__brand" @click="closeMenu">
-        <span class="navbar__logo">🖥️</span>
+        <img class="navbar__logo" src="/logo.png" alt="CNTA Logo" />
         <span class="navbar__name">CNTA</span>
       </RouterLink>
 
@@ -83,7 +83,9 @@ function closeMenu() {
 }
 
 .navbar__logo {
-  font-size: 1.5rem;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 .navbar__links {

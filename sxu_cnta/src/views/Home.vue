@@ -1,5 +1,14 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import ImageCarousel from '@/components/ImageCarousel.vue'
+
+const base = import.meta.env.BASE_URL
+const 协会场地 = [
+  `${base}images/协会场地/自习室.jpg`,
+  `${base}images/协会场地/机房.jpg`,
+  `${base}images/协会场地/会议室.jpg`,
+  `${base}images/协会场地/e2d2cb6268a011762fd616bb13d4df1e.jpg`,
+]
 </script>
 
 <template>
@@ -121,9 +130,12 @@ import { RouterLink } from 'vue-router'
       <div class="container" style="text-align: center">
         <h2 class="section__title">独立自习室</h2>
         <p class="section__subtitle">专属学习空间</p>
-        <p style="max-width: 640px; margin: 0 auto; line-height: 1.8">
+        <p style="max-width: 640px; margin: 0 auto 32px; line-height: 1.8">
           我们拥有专属的自习室，为成员们提供了一个稳定、高效的学习和交流环境。在这里，当你遇到技术难题时，可以随时向经验丰富的学长学姐请教，获得及时的指导和帮助。这个空间不仅是解决问题的场所，更是激发灵感、突破瓶颈的摇篮。
         </p>
+        <div style="max-width: 480px; margin: 0 auto">
+          <ImageCarousel :images="协会场地" title="协会场地" />
+        </div>
       </div>
     </section>
 

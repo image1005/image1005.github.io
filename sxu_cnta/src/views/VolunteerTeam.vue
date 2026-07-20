@@ -1,3 +1,33 @@
+<script setup lang="ts">
+import ImageCarousel from '@/components/ImageCarousel.vue'
+
+const base = import.meta.env.BASE_URL
+
+const 校园网络义诊 = [
+  `${base}images/校园网络义诊/3e1503154d86b79554828d8819ff43c0.jpg`,
+  `${base}images/校园网络义诊/88fb8fa53bd12f1ae1cb45622520ff89.jpg`,
+  `${base}images/校园网络义诊/8f8b46c87e5ff62d2f981d3069b887f7.jpg`,
+]
+
+const 数字助老 = [
+  `${base}images/数字助老/d23a5c75d6004929f3ed8e4dc9fd764a.jpg`,
+  `${base}images/数字助老/f1ba5f46624b1de82ce626e13b5b3670.jpg`,
+  `${base}images/数字助老/fc75fb6f0d86800e249796e1c0e452a2.jpg`,
+]
+
+const 安全宣讲 = [
+  `${base}images/安全宣讲/2.jpg`,
+  `${base}images/安全宣讲/5e372c0b01b300f877e99925ba79edff.jpg`,
+  `${base}images/安全宣讲/8dd2d958fef5ce49eda1f3a05d66db52.jpg`,
+]
+
+const 网络安全宣讲周 = [
+  `${base}images/网络安全宣讲周/509dbea26ec886bb63f6757c0d154947.jpg`,
+  `${base}images/网络安全宣讲周/5fed18de069ce1cd344421015665250b.jpg`,
+  `${base}images/网络安全宣讲周/8d21a9c2f61237e84e0670a9b94afcbe.jpg`,
+]
+</script>
+
 <template>
   <div class="volunteer-team">
     <!-- Page Header -->
@@ -104,8 +134,23 @@
       </div>
     </section>
 
-    <!-- 电脑义诊 -->
+    <!-- 活动风采 -->
     <section class="section section--alt">
+      <div class="container">
+        <h2 class="section__title">活动风采</h2>
+        <p class="section__subtitle">用行动传递温暖，用技术点亮生活</p>
+
+        <div class="grid-2">
+          <ImageCarousel :images="校园网络义诊" title="校园网络义诊" />
+          <ImageCarousel :images="数字助老" title="数字助老" />
+          <ImageCarousel :images="安全宣讲" title="安全宣讲" />
+          <ImageCarousel :images="网络安全宣讲周" title="网络安全宣讲周" />
+        </div>
+      </div>
+    </section>
+
+    <!-- 电脑义诊 -->
+    <section class="section">
       <div class="container">
         <h2 class="section__title">电脑义诊</h2>
         <p class="section__subtitle">为你的数字生活保驾护航！</p>
@@ -156,7 +201,7 @@
     </section>
 
     <!-- 相亲相爱一家人 -->
-    <section class="section">
+    <section class="section section--alt">
       <div class="container">
         <h2 class="section__title">相亲相爱一家人</h2>
         <p class="section__subtitle">我们是朋友，是伙伴，更是家人</p>
@@ -179,7 +224,7 @@
     </section>
 
     <!-- 期待加入 -->
-    <section class="section section--alt" style="text-align: center">
+    <section class="section" style="text-align: center">
       <div class="container">
         <h2 class="section__title">期待你的加入</h2>
         <p class="section__subtitle">加入志愿队大家庭，和我们一起用技术传递温暖</p>
