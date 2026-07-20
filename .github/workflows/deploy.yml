@@ -1,0 +1,68 @@
+name: Deploy to GitHub Pages
+
+on:
+  # 当 master 分支收到 push 时自动触发
+  push:
+    branches: [master]
+  # 允许在 GitHub 网页上手动触发（方便调试）
+  workflow_dispatch:
+
+# 权限设置：GitHub Pages 部署需要
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只允许一个部署任务运行，避免冲突
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      # 1. 拉取仓库源码
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. 安装 pnpm 包管理器
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      # 3. 安装 Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: sxu_cnta/pnpm-lock.yaml
+
+      # 4. 安装项目依赖
+      - name: Install dependencies
+        run: cd sxu_cnta && pnpm install --frozen-lockfile
+
+      # 5. 构建 Vue 项目（生成 dist/）
+      - name: Build
+        run: cd sxu_cnta && pnpm build
+
+      # 6. 配置 GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # 7. 上传整个仓库作为 Pages 站点内容
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      # 8. 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
