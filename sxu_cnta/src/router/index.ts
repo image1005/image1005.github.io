@@ -39,17 +39,17 @@ const router = createRouter({
       component: Login,
       meta: { title: '统一身份认证' },
     },
+    {
       path: '/ai',
       name: 'ai',
       component: Ai,
       meta: { title: 'Ai助手' },
-    }
+    },
   ],
 })
 
-router.beforeEach((to, from, next) => {
-  document.title = to.meta.title as string || 'SXU-CNTA'
-  next()
+router.beforeEach((to) => {
+  document.title = (to.meta.title as string) || 'SXU-CNTA'
 })
 
 export default router
