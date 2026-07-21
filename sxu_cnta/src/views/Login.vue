@@ -34,17 +34,17 @@ const services: ServiceItem[] = [
 <template>
   <div class="login-page">
     <!-- Hero -->
-    <section class="py-[120px] max-md:py-[100px] text-center bg-white border-b border-border">
+    <section class="py-[120px] max-md:py-[100px] text-center bg-white dark:bg-black border-b border-border dark:border-neutral-700">
       <div class="max-w-[1200px] mx-auto px-6">
         <img
           :src="logoUrl"
           alt="SXU CNTA 统一身份认证"
           class="max-w-[280px] max-md:max-w-[200px] w-full h-auto mx-auto mb-7"
         />
-        <h1 class="text-[2.4rem] max-md:text-[1.8rem] font-extrabold mb-3 tracking-wide">
+        <h1 class="text-[2.4rem] max-md:text-[1.8rem] font-extrabold mb-3 tracking-wide text-text dark:text-white">
           SXU 网协统一身份认证
         </h1>
-        <p class="text-base text-text-secondary max-w-[480px] mx-auto mb-10 leading-relaxed">
+        <p class="text-base text-text-secondary dark:text-gray-400 max-w-[480px] mx-auto mb-10 leading-relaxed">
           一个账号连接协会全部服务
         </p>
 
@@ -52,7 +52,7 @@ const services: ServiceItem[] = [
           :href="loginUrl"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2.5 px-10 py-3.5 text-[17px] font-semibold bg-black text-white border border-black rounded-md hover:bg-[#222] transition-colors no-underline active:scale-[0.98]"
+          class="inline-flex items-center gap-2.5 px-10 py-3.5 text-[17px] font-semibold bg-black dark:bg-white text-white dark:text-black border border-black dark:border-white rounded-md hover:bg-[#222] dark:hover:bg-gray-200 transition-colors no-underline active:scale-[0.98]"
         >
           前往登录
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

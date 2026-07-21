@@ -75,15 +75,15 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div v-if="images.length > 0" class="border border-border rounded-md overflow-hidden" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
+  <div v-if="images.length > 0" class="border border-border dark:border-neutral-700 rounded-md overflow-hidden" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
     <div class="flex items-center justify-between px-4 py-3 gap-2">
-      <h3 v-if="title" class="text-base font-semibold text-text">{{ title }}</h3>
-      <span class="text-sm text-text-secondary whitespace-nowrap">{{ currentIndex + 1 }} / {{ total }}</span>
+      <h3 v-if="title" class="text-base font-semibold text-text dark:text-white">{{ title }}</h3>
+      <span class="text-sm text-text-secondary dark:text-gray-400 whitespace-nowrap">{{ currentIndex + 1 }} / {{ total }}</span>
     </div>
 
-    <div class="relative flex items-center aspect-[4/3] overflow-hidden bg-bg-alt">
+    <div class="relative flex items-center aspect-[4/3] overflow-hidden bg-bg-alt dark:bg-black">
       <button
-        class="absolute z-[2] left-2 w-10 h-10 rounded-full border border-border bg-white flex items-center justify-center text-2xl leading-none cursor-pointer hover:bg-bg-alt transition-colors"
+        class="absolute z-[2] left-2 w-10 h-10 rounded-full border border-border dark:border-neutral-700 bg-white dark:bg-neutral-900 flex items-center justify-center text-2xl leading-none cursor-pointer hover:bg-bg-alt dark:hover:bg-neutral-700 transition-colors text-text dark:text-white"
         @click="prev"
         :aria-label="'上一张'"
       >
@@ -102,7 +102,7 @@ onUnmounted(() => {
       </div>
 
       <button
-        class="absolute z-[2] right-2 w-10 h-10 rounded-full border border-border bg-white flex items-center justify-center text-2xl leading-none cursor-pointer hover:bg-bg-alt transition-colors"
+        class="absolute z-[2] right-2 w-10 h-10 rounded-full border border-border dark:border-neutral-700 bg-white dark:bg-neutral-900 flex items-center justify-center text-2xl leading-none cursor-pointer hover:bg-bg-alt dark:hover:bg-neutral-700 transition-colors text-text dark:text-white"
         @click="next"
         :aria-label="'下一张'"
       >
@@ -114,8 +114,8 @@ onUnmounted(() => {
       <button
         v-for="(_, i) in images"
         :key="i"
-        class="w-2.5 h-2.5 rounded-full border border-border cursor-pointer p-0 transition-colors"
-        :class="i === currentIndex ? 'bg-text border-text' : 'bg-transparent'"
+        class="w-2.5 h-2.5 rounded-full border border-border dark:border-neutral-700 cursor-pointer p-0 transition-colors"
+        :class="i === currentIndex ? 'bg-text dark:bg-white border-text dark:border-white' : 'bg-transparent'"
         :aria-label="`第 ${i + 1} 张`"
         @click="goTo(i)"
       ></button>
