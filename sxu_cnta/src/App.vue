@@ -5,14 +5,8 @@ import SiteFooter from './components/SiteFooter.vue'
 
 <template>
   <NavBar />
-  <main class="main-content">
+  <main class="min-h-[calc(100vh-64px-140px)] mt-16">
     <router-view />
   </main>
   <SiteFooter />
 </template>
-
-<style scoped>
-.main-content {
-  min-height: calc(100vh - var(--nav-height) - 140px);
-}
-</style>

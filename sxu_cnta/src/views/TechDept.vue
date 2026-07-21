@@ -51,44 +51,50 @@ const 学习资源 = [
 <template>
   <div class="tech-dept">
     <!-- Page Header -->
-    <section class="page-header">
-      <div class="container">
-        <h1 class="page-header__title">技术部</h1>
-        <p class="page-header__desc">
+    <section class="py-[120px] max-md:py-[100px] text-center bg-white border-b border-border">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <h1 class="text-[2.4rem] max-md:text-[1.8rem] font-extrabold mb-4">技术部</h1>
+        <p class="text-lg text-text-secondary max-w-[600px] mx-auto">
           我们是技术的探索者和实践者，致力于在网络安全的海洋中航行，在前沿开发的浪潮中冲锋，在坚实的网络基建上构建未来。在这里，我们共同学习、挑战并成长。
         </p>
       </div>
     </section>
 
     <!-- 技术基因 -->
-    <section class="section">
-      <div class="container">
-        <h2 class="section__title">技术基因</h2>
-        <p class="section__subtitle">三大方向，全面覆盖</p>
+    <section class="py-20 max-md:py-12">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <h2 class="text-[2rem] max-md:text-[1.5rem] font-bold text-center mb-3">技术基因</h2>
+        <p class="text-base text-text-secondary text-center mb-12 max-w-[640px] mx-auto">三大方向，全面覆盖</p>
 
-        <div class="grid-3">
-          <div class="card">
-            <div class="card__icon">🔒</div>
-            <h3 class="card__title">网络安全</h3>
-            <p class="card__desc">
+        <div class="grid grid-cols-3 max-md:grid-cols-1 gap-6">
+          <div class="border border-border rounded-sm p-8">
+            <div class="mb-4">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">网络安全</h3>
+            <p class="text-[15px] leading-relaxed text-text-secondary mb-3">
               CTF竞赛训练、漏洞挖掘与复现、企业级安全攻防实践。
             </p>
-            <span class="tag" style="margin-top: 12px">CTF</span>
+            <span class="inline-block px-2.5 py-0.5 text-xs font-medium border border-border rounded-sm bg-bg text-text-secondary">CTF</span>
           </div>
 
-          <div class="card">
-            <div class="card__icon">⚡</div>
-            <h3 class="card__title">前沿开发</h3>
-            <p class="card__desc">
+          <div class="border border-border rounded-sm p-8">
+            <div class="mb-4">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">前沿开发</h3>
+            <p class="text-[15px] leading-relaxed text-text-secondary mb-3">
               探索Web前端、Java后端等前沿技术的应用与落地。
             </p>
-            <span class="tag" style="margin-top: 12px">开发</span>
+            <span class="inline-block px-2.5 py-0.5 text-xs font-medium border border-border rounded-sm bg-bg text-text-secondary">开发</span>
           </div>
 
-          <div class="card">
-            <div class="card__icon">🖧</div>
-            <h3 class="card__title">运维</h3>
-            <p class="card__desc">
+          <div class="border border-border rounded-sm p-8">
+            <div class="mb-4">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><path d="M6 6h.01"/><path d="M6 18h.01"/></svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">运维</h3>
+            <p class="text-[15px] leading-relaxed text-text-secondary">
               负责校园网络服务维护、Linux服务器集群管理与自动化运维。
             </p>
           </div>
@@ -97,12 +103,12 @@ const 学习资源 = [
     </section>
 
     <!-- CNTA Wiki -->
-    <section class="section section--alt">
-      <div class="container" style="text-align: center">
-        <h2 class="section__title">CNTA Wiki</h2>
-        <p class="section__subtitle">知识沉淀，共同成长</p>
-        <div class="highlight-box" style="text-align: left">
-          <p>
+    <section class="py-20 max-md:py-12 bg-bg border-y border-border">
+      <div class="max-w-[1200px] mx-auto px-6 text-center">
+        <h2 class="text-[2rem] max-md:text-[1.5rem] font-bold mb-3">CNTA Wiki</h2>
+        <p class="text-base text-text-secondary mb-12 max-w-[640px] mx-auto">知识沉淀，共同成长</p>
+        <div class="border border-border border-l-[3px] border-l-text-secondary rounded-r-sm p-6 text-left bg-white max-w-[800px] mx-auto">
+          <p class="text-[15px] leading-relaxed text-text-secondary">
             CNTA Wiki 是一个面向社团全体成员的知识库，由技术部精心搭建与维护。它不仅是技术知识的沉淀池，更是我们共同学习、分享与成长的见证。在这里，你可以找到从入门到进阶的各类学习资料、项目文档、以及历届技术沙龙的精华回顾。
           </p>
         </div>
@@ -110,17 +116,15 @@ const 学习资源 = [
     </section>
 
     <!-- 培训活动 -->
-    <section class="section">
-      <div class="container">
-        <h2 class="section__title">培训活动</h2>
-        <p class="section__subtitle">技术培训与知识分享</p>
-        <div style="max-width: 720px; margin: 0 auto 0">
-          <p style="line-height: 1.9; text-align: center; margin-bottom: 40px">
-            我们定期举办技术沙龙、专题讲座和实战工作坊，内容涵盖网络安全、软件开发、服务器运维等多个领域，旨在为同学们提供一个学习和交流的平台，共同成长。
-          </p>
-        </div>
+    <section class="py-20 max-md:py-12">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <h2 class="text-[2rem] max-md:text-[1.5rem] font-bold text-center mb-3">培训活动</h2>
+        <p class="text-base text-text-secondary text-center mb-12 max-w-[640px] mx-auto">技术培训与知识分享</p>
+        <p class="max-w-[720px] mx-auto mb-10 text-center leading-relaxed text-text-secondary">
+          我们定期举办技术沙龙、专题讲座和实战工作坊，内容涵盖网络安全、软件开发、服务器运维等多个领域，旨在为同学们提供一个学习和交流的平台，共同成长。
+        </p>
 
-        <div class="grid-3">
+        <div class="grid grid-cols-3 max-md:grid-cols-1 gap-6">
           <ImageCarousel :images="技术部例会" title="技术部例会" />
           <ImageCarousel :images="保研讲座" title="保研讲座" />
           <ImageCarousel :images="学习资源" title="学习资源" />
@@ -129,12 +133,12 @@ const 学习资源 = [
     </section>
 
     <!-- 系统化学习 -->
-    <section class="section section--alt">
-      <div class="container">
-        <h2 class="section__title">从零开始，系统化学习</h2>
-        <p class="section__subtitle">无论基础如何，都能找到自己的节奏</p>
-        <div class="highlight-box">
-          <p>
+    <section class="py-20 max-md:py-12 bg-bg border-y border-border">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <h2 class="text-[2rem] max-md:text-[1.5rem] font-bold text-center mb-3">从零开始，系统化学习</h2>
+        <p class="text-base text-text-secondary text-center mb-12 max-w-[640px] mx-auto">无论基础如何，都能找到自己的节奏</p>
+        <div class="border border-border border-l-[3px] border-l-text-secondary rounded-r-sm p-6 bg-white max-w-[800px] mx-auto">
+          <p class="text-[15px] leading-relaxed text-text-secondary">
             我们为新成员提供了系统化的训练平台，内容从计算机基础、网络协议到前后端开发、网络安全入门，无论基础如何，都能找到适合自己的学习节奏。通过项目驱动的实践，你将逐步构建解决复杂问题的能力，并在团队协作中快速成长。
           </p>
         </div>
@@ -142,52 +146,56 @@ const 学习资源 = [
     </section>
 
     <!-- 竞赛舞台 -->
-    <section class="section">
-      <div class="container">
-        <h2 class="section__title">竞赛舞台</h2>
-        <p class="section__subtitle">以赛促学，挑战自我</p>
+    <section class="py-20 max-md:py-12">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <h2 class="text-[2rem] max-md:text-[1.5rem] font-bold text-center mb-3">竞赛舞台</h2>
+        <p class="text-base text-text-secondary text-center mb-12 max-w-[640px] mx-auto">以赛促学，挑战自我</p>
 
-        <div class="grid-2" style="margin-bottom: 48px">
-          <div class="card" style="text-align: center">
-            <div class="card__icon" style="margin: 0 auto 16px">🛡️</div>
-            <h3 class="card__title">全国大学生信息安全竞赛</h3>
-            <p class="card__desc">CISCN</p>
+        <div class="grid grid-cols-2 max-md:grid-cols-1 gap-6 mb-12">
+          <div class="border border-border rounded-sm p-8 text-center">
+            <div class="mb-4 mx-auto flex justify-center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">全国大学生信息安全竞赛</h3>
+            <p class="text-[15px] text-text-secondary">CISCN</p>
           </div>
 
-          <div class="card" style="text-align: center">
-            <div class="card__icon" style="margin: 0 auto 16px">🏅</div>
-            <h3 class="card__title">春秋杯网络安全联赛</h3>
-            <p class="card__desc">与全国顶尖选手同台竞技</p>
+          <div class="border border-border rounded-sm p-8 text-center">
+            <div class="mb-4 mx-auto flex justify-center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">春秋杯网络安全联赛</h3>
+            <p class="text-[15px] text-text-secondary">与全国顶尖选手同台竞技</p>
           </div>
         </div>
 
         <!-- 近期竞赛成果 -->
-        <h3 style="font-size: 1.3rem; font-weight: 700; text-align: center; margin-bottom: 32px">近期竞赛成果</h3>
-        <div class="grid-2">
-          <div class="card">
-            <h3 class="card__title">第三届"熵密杯"密码安全挑战赛</h3>
-            <p class="card__desc" style="margin-top: 8px">
+        <h3 class="text-[1.3rem] font-bold text-center mb-8">近期竞赛成果</h3>
+        <div class="grid grid-cols-2 max-md:grid-cols-1 gap-6 mb-12">
+          <div class="border border-border rounded-sm p-8">
+            <h3 class="text-lg font-semibold mb-2">第三届"熵密杯"密码安全挑战赛</h3>
+            <p class="text-[15px] leading-relaxed text-text-secondary">
               与清华大学、中山大学等密码学强校同台竞技，展现专业实力。
             </p>
-            <p style="margin-top: 12px; font-weight: 500; font-size: 0.9rem">
+            <p class="mt-3 text-sm font-medium text-text">
               技术亮点：密码算法深度解析能力
             </p>
           </div>
 
-          <div class="card">
-            <h3 class="card__title">首届全国大学生AI安全竞赛</h3>
-            <p class="card__desc" style="margin-top: 8px">
+          <div class="border border-border rounded-sm p-8">
+            <h3 class="text-lg font-semibold mb-2">首届全国大学生AI安全竞赛</h3>
+            <p class="text-[15px] leading-relaxed text-text-secondary">
               在首届全国大学生人工智能安全竞赛中，我院学子斩获全国二等奖2项、三等奖1项。
             </p>
-            <p style="margin-top: 12px; font-weight: 500; font-size: 0.9rem">
+            <p class="mt-3 text-sm font-medium text-text">
               核心技术挑战：参与AI安全相关的核心技术攻关
             </p>
           </div>
         </div>
 
         <!-- 竞赛风采 -->
-        <h3 style="font-size: 1.3rem; font-weight: 700; text-align: center; margin: 48px 0 32px">竞赛风采</h3>
-        <div class="grid-2">
+        <h3 class="text-[1.3rem] font-bold text-center mb-8">竞赛风采</h3>
+        <div class="grid grid-cols-2 max-md:grid-cols-1 gap-6">
           <ImageCarousel :images="信息安全竞赛" title="全国大学生信息安全竞赛" />
           <ImageCarousel :images="AI安全竞赛" title="全国大学生人工智能安全竞赛" />
           <ImageCarousel :images="熵密杯" title="熵密杯密码安全挑战赛" />
@@ -197,11 +205,11 @@ const 学习资源 = [
     </section>
 
     <!-- 加入技术部 -->
-    <section class="section section--alt" style="text-align: center">
-      <div class="container">
-        <h2 class="section__title">加入技术部</h2>
-        <p class="section__subtitle">扫码加入技术部招新群，开启技术之旅</p>
-        <div style="width: 200px; height: 200px; border: 1px solid; margin: 20px auto 0; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; border-radius: 12px">
+    <section class="py-20 max-md:py-12 bg-bg border-y border-border text-center">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <h2 class="text-[2rem] max-md:text-[1.5rem] font-bold mb-3">加入技术部</h2>
+        <p class="text-base text-text-secondary mb-5 max-w-[640px] mx-auto">扫码加入技术部招新群，开启技术之旅</p>
+        <div class="w-[200px] h-[200px] border border-border rounded-md mx-auto flex items-center justify-center text-sm text-text-muted">
           二维码占位
         </div>
       </div>

@@ -10,6 +10,7 @@ const navItems = [
   { path: '/tech', label: '技术部' },
   { path: '/volunteer', label: '志愿队' },
   { path: '/join', label: '加入我们' },
+  { path: '/login', label: '登录' },
 ]
 
 function isActive(path: string) {
@@ -22,147 +23,64 @@ function closeMenu() {
 </script>
 
 <template>
-  <nav class="navbar">
-    <div class="navbar__inner container">
-      <RouterLink to="/" class="navbar__brand" @click="closeMenu">
-        <img class="navbar__logo" src="/logo.png" alt="CNTA Logo" />
-        <span class="navbar__name">CNTA</span>
+  <nav class="fixed top-0 left-0 right-0 h-16 bg-white border-b border-border z-50">
+    <div class="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
+      <RouterLink to="/" class="flex items-center gap-2.5 text-lg font-bold text-text no-underline" @click="closeMenu">
+        <img class="w-8 h-8 object-contain" src="/logo.png" alt="CNTA Logo" />
+        <span>CNTA</span>
       </RouterLink>
 
-      <button
-        class="navbar__toggle"
-        :class="{ 'navbar__toggle--open': menuOpen }"
-        @click="menuOpen = !menuOpen"
-        aria-label="切换菜单"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <div class="navbar__links" :class="{ 'navbar__links--open': menuOpen }">
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-1">
         <RouterLink
           v-for="item in navItems"
           :key="item.path"
           :to="item.path"
-          class="navbar__link"
-          :class="{ 'navbar__link--active': isActive(item.path) }"
+          class="px-4 py-1.5 text-[15px] font-medium text-text-secondary no-underline hover:text-text transition-colors"
+          :class="{ '!text-text underline underline-offset-[6px]': isActive(item.path) }"
           @click="closeMenu"
         >
           {{ item.label }}
         </RouterLink>
       </div>
+
+      <!-- Mobile hamburger -->
+      <button
+        class="md:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-1"
+        :class="{ 'gap-0': menuOpen }"
+        @click="menuOpen = !menuOpen"
+        aria-label="切换菜单"
+      >
+        <span
+          class="block w-6 h-0.5 bg-current transition-transform"
+          :class="{ 'rotate-45 translate-y-[1px]': menuOpen }"
+        ></span>
+        <span
+          class="block w-6 h-0.5 bg-current transition-opacity"
+          :class="{ 'opacity-0': menuOpen }"
+        ></span>
+        <span
+          class="block w-6 h-0.5 bg-current transition-transform"
+          :class="{ '-rotate-45 -translate-y-[4px]': menuOpen }"
+        ></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div
+      class="md:hidden fixed top-16 left-0 right-0 bg-white border-b border-border flex flex-col px-6 py-4 gap-1 transition-all duration-200"
+      :class="menuOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'"
+    >
+      <RouterLink
+        v-for="item in navItems"
+        :key="item.path"
+        :to="item.path"
+        class="w-full px-4 py-3 text-[17px] font-medium text-text-secondary no-underline hover:text-text"
+        :class="{ '!text-text underline underline-offset-[6px]': isActive(item.path) }"
+        @click="closeMenu"
+      >
+        {{ item.label }}
+      </RouterLink>
     </div>
   </nav>
 </template>
-
-<style scoped>
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--nav-height);
-  border-bottom: 1px solid;
-  z-index: 1000;
-}
-
-.navbar__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-}
-
-.navbar__brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.navbar__logo {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
-
-.navbar__links {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.navbar__link {
-  padding: 6px 16px;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.navbar__link--active {
-  text-decoration: underline;
-}
-
-/* Hamburger */
-.navbar__toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
-
-.navbar__toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: currentColor;
-}
-
-.navbar__toggle--open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.navbar__toggle--open span:nth-child(2) {
-  opacity: 0;
-}
-
-.navbar__toggle--open span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-@media (max-width: 768px) {
-  .navbar__toggle {
-    display: flex;
-  }
-
-  .navbar__links {
-    position: fixed;
-    top: var(--nav-height);
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    padding: 16px 24px;
-    gap: 4px;
-    border-bottom: 1px solid;
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .navbar__links--open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .navbar__link {
-    width: 100%;
-    padding: 12px 16px;
-    font-size: 1.05rem;
-  }
-}
-</style>
