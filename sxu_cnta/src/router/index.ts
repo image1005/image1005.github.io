@@ -4,6 +4,7 @@ import TechDept from '../views/TechDept.vue'
 import VolunteerTeam from '../views/VolunteerTeam.vue'
 import JoinUs from '../views/JoinUs.vue'
 import Login from '../views/Login.vue'
+import Ai from '../views/Ai.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,7 +39,17 @@ const router = createRouter({
       component: Login,
       meta: { title: '统一身份认证' },
     },
+      path: '/ai',
+      name: 'ai',
+      component: Ai,
+      meta: { title: 'Ai助手' },
+    }
   ],
+})
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title as string || 'SXU-CNTA'
+  next()
 })
 
 export default router
