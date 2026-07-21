@@ -13,13 +13,13 @@
         <div :class="['message', message.role === 'user' ? 'user-message' : 'assistant-message']">
           <div class="message-avatar">
             <img
-              :src="message.role === 'user' ? '/sxu_cnta/dist/icons/user.svg' : '/sxu_cnta/dist/icons/robot.svg'"
+              :src="message.role === 'user' ? `${base}icons/user.svg` : `${base}icons/robot.svg`"
               :alt="message.role === 'user' ? '用户' : 'AI'"
               class="avatar-icon"
             />
           </div>
           <div class="message-content">
-            <div class="message-text">{{ message.content }}</div>
+            <div class="message-text" v-html="renderMarkdown(message.content)"></div>
             <div class="message-time">{{ formatTime(message.time) }}</div>
           </div>
         </div>
@@ -28,7 +28,7 @@
       <div v-if="isLoading" class="message-wrapper">
         <div class="message assistant-message">
           <div class="message-avatar">
-            <img :src="'/sxu_cnta/dist/icons/robot.svg'" alt="AI" class="avatar-icon" />
+            <img :src="`${base}icons/robot.svg`" alt="AI" class="avatar-icon" />
           </div>
           <div class="message-content">
             <div class="typing-indicator">
@@ -48,6 +48,7 @@
         @keydown.enter.prevent="sendMessage"
         placeholder="输入您的问题..."
         rows="3"
+        maxlength="4000"
         :disabled="isLoading"
         class="message-input"
       ></textarea>
@@ -63,7 +64,7 @@
 
     <!-- 错误提示 -->
     <div v-if="errorMessage" class="error-message">
-      <img :src="'/sxu_cnta/dist/icons/error.svg'" class="error-icon" alt="错误" />
+      <img :src="`${base}icons/error.svg`" class="error-icon" alt="错误" />
       {{ errorMessage }}
     </div>
   </div>
@@ -74,7 +75,8 @@ import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 import { generateText } from 'ai';
 import { decodeImage, extractTextFromImage } from '@pinta365/steganography';
 import CryptoJS from 'crypto-js';
-import { nextTick, onMounted, ref, watch } from 'vue';
+import { marked } from 'marked';
+import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 
 // ===== 反调试：拦截控制台输出 API Key =====
 (() => {
@@ -98,6 +100,8 @@ interface Message {
   time: number;
 }
 
+const base = import.meta.env.BASE_URL;
+
 const messages = ref<Message[]>([]);
 const inputMessage = ref('');
 const isLoading = ref(false);
@@ -116,8 +120,11 @@ const formatTime = (timestamp: number) => {
   return `${hours}:${minutes}`;
 };
 
+// Markdown 渲染
+const renderMarkdown = (text: string) => marked.parse(text) as string;
+
 // ===== 反调试：检测 DevTools =====
-setInterval(() => {
+const devtoolsCheckInterval = setInterval(() => {
   const before = new Date().getTime();
   debugger;
   const after = new Date().getTime();
@@ -154,7 +161,7 @@ onMounted(async () => {
 
     if (method === 1) {
       // flag1：从 logo.png 隐写解码
-      const response = await fetch('/sxu_cnta/dist/logo.png');
+      const response = await fetch(`${base}logo.png`);
       const fileBytes = new Uint8Array(await response.arrayBuffer());
       const image = await decodeImage(fileBytes);
       const payload = extractTextFromImage(image.data);
@@ -193,7 +200,7 @@ onMounted(async () => {
 
   // 加载系统提示词
   try {
-    const resp = await fetch('/sxu_cnta/dist/sysPrompt.json');
+    const resp = await fetch(`${base}sysPrompt.json`);
     const data = await resp.json();
     systemPrompt.value = data.val || '';
   } catch (e) {
@@ -205,6 +212,10 @@ onMounted(async () => {
     content: '你好！我是 CNTA AI 助手，有什么可以帮助你的吗？',
     time: Date.now()
   });
+});
+
+onUnmounted(() => {
+  clearInterval(devtoolsCheckInterval);
 });
 
 const sendMessage = async () => {
@@ -413,19 +424,106 @@ const sendMessage = async () => {
   font-size: 0.95rem;
   line-height: 1.6;
   word-break: break-word;
-  white-space: pre-wrap;
 }
 
 .user-message .message-text {
   background: #1677ff;
   color: #fff;
   border-bottom-right-radius: 4px;
+  white-space: pre-wrap;
 }
 
 .assistant-message .message-text {
   background: #f5f5f5;
   color: #1a1a1a;
   border-bottom-left-radius: 4px;
+}
+
+/* ===== Markdown 内容样式 ===== */
+.assistant-message .message-text :deep(p) {
+  margin: 0 0 0.5em;
+}
+
+.assistant-message .message-text :deep(p:last-child) {
+  margin-bottom: 0;
+}
+
+.assistant-message .message-text :deep(code) {
+  background: #e8e8e8;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+.assistant-message .message-text :deep(pre) {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 12px 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 0.5em 0;
+}
+
+.assistant-message .message-text :deep(pre code) {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.85em;
+}
+
+.assistant-message .message-text :deep(ul),
+.assistant-message .message-text :deep(ol) {
+  padding-left: 1.5em;
+  margin: 0.25em 0;
+}
+
+.assistant-message .message-text :deep(li) {
+  margin-bottom: 0.25em;
+}
+
+.assistant-message .message-text :deep(blockquote) {
+  border-left: 3px solid #1677ff;
+  padding-left: 12px;
+  margin: 0.5em 0;
+  color: #666;
+}
+
+.assistant-message .message-text :deep(a) {
+  color: #1677ff;
+  text-decoration: underline;
+}
+
+.assistant-message .message-text :deep(table) {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.5em 0;
+}
+
+.assistant-message .message-text :deep(th),
+.assistant-message .message-text :deep(td) {
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  text-align: left;
+}
+
+.assistant-message .message-text :deep(th) {
+  background: #f0f0f0;
+  font-weight: 600;
+}
+
+.assistant-message .message-text :deep(hr) {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 0.75em 0;
+}
+
+.assistant-message .message-text :deep(strong) {
+  font-weight: 600;
+}
+
+.assistant-message .message-text :deep(em) {
+  font-style: italic;
 }
 
 .message-time {
