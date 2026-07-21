@@ -75,39 +75,47 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div v-if="images.length > 0" class="carousel-card" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
-    <div class="carousel-card__header">
-      <h3 v-if="title" class="carousel-card__title">{{ title }}</h3>
-      <span class="carousel-card__counter">{{ currentIndex + 1 }} / {{ total }}</span>
+  <div v-if="images.length > 0" class="border border-border rounded-md overflow-hidden" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
+    <div class="flex items-center justify-between px-4 py-3 gap-2">
+      <h3 v-if="title" class="text-base font-semibold text-text">{{ title }}</h3>
+      <span class="text-sm text-text-secondary whitespace-nowrap">{{ currentIndex + 1 }} / {{ total }}</span>
     </div>
 
-    <div class="carousel-card__viewport">
-      <button class="carousel-card__btn carousel-card__btn--prev" @click="prev" :aria-label="'上一张'">
-        ‹
+    <div class="relative flex items-center aspect-[4/3] overflow-hidden bg-bg-alt">
+      <button
+        class="absolute z-[2] left-2 w-10 h-10 rounded-full border border-border bg-white flex items-center justify-center text-2xl leading-none cursor-pointer hover:bg-bg-alt transition-colors"
+        @click="prev"
+        :aria-label="'上一张'"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
 
-      <div class="carousel-card__slide">
+      <div class="flex-1 h-full overflow-hidden">
         <Transition :name="direction === 'right' ? 'slide-right' : 'slide-left'" mode="out-in">
           <img
             :key="currentIndex"
             :src="images[currentIndex]"
             :alt="title ? `${title} - ${currentIndex + 1}` : `图片 ${currentIndex + 1}`"
-            class="carousel-card__img"
+            class="w-full h-full object-cover block"
           />
         </Transition>
       </div>
 
-      <button class="carousel-card__btn carousel-card__btn--next" @click="next" :aria-label="'下一张'">
-        ›
+      <button
+        class="absolute z-[2] right-2 w-10 h-10 rounded-full border border-border bg-white flex items-center justify-center text-2xl leading-none cursor-pointer hover:bg-bg-alt transition-colors"
+        @click="next"
+        :aria-label="'下一张'"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
       </button>
     </div>
 
-    <div v-if="total > 1" class="carousel-card__dots">
+    <div v-if="total > 1" class="flex justify-center gap-2 px-4 py-3">
       <button
         v-for="(_, i) in images"
         :key="i"
-        class="carousel-card__dot"
-        :class="{ 'carousel-card__dot--active': i === currentIndex }"
+        class="w-2.5 h-2.5 rounded-full border border-border cursor-pointer p-0 transition-colors"
+        :class="i === currentIndex ? 'bg-text border-text' : 'bg-transparent'"
         :aria-label="`第 ${i + 1} 张`"
         @click="goTo(i)"
       ></button>
@@ -116,98 +124,6 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.carousel-card {
-  border: 1px solid;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.carousel-card__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  gap: 8px;
-}
-
-.carousel-card__title {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.carousel-card__counter {
-  font-size: 0.85rem;
-  white-space: nowrap;
-}
-
-.carousel-card__viewport {
-  position: relative;
-  display: flex;
-  align-items: center;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-}
-
-.carousel-card__slide {
-  flex: 1;
-  height: 100%;
-  overflow: hidden;
-}
-
-.carousel-card__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.carousel-card__btn {
-  position: absolute;
-  z-index: 2;
-  width: 40px;
-  height: 40px;
-  border: 1px solid;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: inherit;
-}
-
-.carousel-card__btn--prev {
-  left: 8px;
-}
-
-.carousel-card__btn--next {
-  right: 8px;
-}
-
-.carousel-card__dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 16px;
-}
-
-.carousel-card__dot {
-  width: 10px;
-  height: 10px;
-  border: 1px solid;
-  border-radius: 50%;
-  cursor: pointer;
-  padding: 0;
-  background: transparent;
-  transition: background 0.3s ease;
-}
-
-.carousel-card__dot--active {
-  background: currentColor;
-}
-
-/* ===== Slide Transitions ===== */
 .slide-right-enter-active,
 .slide-right-leave-active,
 .slide-left-enter-active,

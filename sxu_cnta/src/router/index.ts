@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import TechDept from '../views/TechDept.vue'
 import VolunteerTeam from '../views/VolunteerTeam.vue'
 import JoinUs from '../views/JoinUs.vue'
+import Login from '../views/Login.vue'
 import Ai from '../views/Ai.vue'
 
 const router = createRouter({
@@ -33,6 +34,11 @@ const router = createRouter({
       meta: { title: '加入我们' },
     },
     {
+      path: '/login',
+      name: 'login',
+      component: Login,
+      meta: { title: '统一身份认证' },
+    },
       path: '/ai',
       name: 'ai',
       component: Ai,
