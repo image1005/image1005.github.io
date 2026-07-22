@@ -4,25 +4,42 @@
 
 @theme {
   --font-sans: 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', system-ui, -apple-system, sans-serif;
-  --color-text: #111111;
-  --color-text-secondary: #666666;
-  --color-text-muted: #999999;
-  --color-border: #e5e5e5;
-  --color-border-strong: #d4d4d4;
-  --color-bg: #fbfbfb;
-  --color-bg-alt: #f5f5f5;
+  --color-text: #1a1a1a;
+  --color-text-secondary: #5c5c5c;
+  --color-text-muted: #8a8a8a;
+  --color-border: #e0dbd2;
+  --color-border-strong: #d0cbc2;
+  --color-bg: #f5f0e8;
+  --color-bg-alt: #ede6da;
 }
 
 body {
   font-family: var(--font-sans);
   color: var(--color-text);
-  background: #ffffff;
+  background: #faf7f2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* 纸张纹理覆盖层 */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
 }
 
 .dark body,
 body.dark {
   background: #000;
   color: #e5e5e5;
+}
+
+.dark body::after {
+  display: none;
 }

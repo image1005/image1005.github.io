@@ -31,7 +31,7 @@ function closeMenu() {
 </script>
 
 <template>
-  <nav class="fixed top-0 left-0 right-0 h-16 bg-white dark:bg-neutral-900 border-b border-border dark:border-neutral-700 z-50">
+  <nav class="fixed top-0 left-0 right-0 h-16 bg-[#faf7f2] dark:bg-neutral-900 border-b border-border dark:border-neutral-700 z-50">
     <div class="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
       <RouterLink to="/" class="flex items-center gap-2.5 text-lg font-bold text-text dark:text-white no-underline" @click="closeMenu">
         <img class="w-8 h-8 object-contain" src="/logo.png" alt="CNTA Logo" />
@@ -101,7 +101,7 @@ function closeMenu() {
 
     <!-- Mobile menu -->
     <div
-      class="md:hidden fixed top-16 left-0 right-0 bg-white dark:bg-neutral-900 border-b border-border dark:border-neutral-700 flex flex-col px-6 py-4 gap-1 transition-all duration-200"
+      class="md:hidden fixed top-16 left-0 right-0 bg-[#faf7f2] dark:bg-neutral-900 border-b border-border dark:border-neutral-700 flex flex-col px-6 py-4 gap-1 transition-all duration-200"
       :class="menuOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'"
     >
       <RouterLink

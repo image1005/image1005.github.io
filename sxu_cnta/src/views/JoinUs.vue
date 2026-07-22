@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TiltCard from '@/components/ui/BeUiTiltCard.vue'
 const base = import.meta.env.BASE_URL
 const 协会招新群 = `${base}images/协会招新群/cnta总群.png`
 const 公众号 = `${base}images/公众号/93737850c43752445459bb32d86c2283.png`
@@ -7,7 +8,7 @@ const 公众号 = `${base}images/公众号/93737850c43752445459bb32d86c2283.png`
 <template>
   <div class="join-us">
     <!-- Page Header -->
-    <section class="py-[120px] max-md:py-[100px] text-center bg-white dark:bg-black border-b border-border dark:border-neutral-700">
+    <section class="py-[120px] max-md:py-[100px] text-center bg-[#faf7f2] dark:bg-black border-b border-border dark:border-neutral-700">
       <div class="max-w-[1200px] mx-auto px-6">
         <h1 class="text-[2.4rem] max-md:text-[1.8rem] font-extrabold mb-4 text-text dark:text-white">加入我们</h1>
         <p class="text-lg text-text-secondary dark:text-gray-400 max-w-[600px] mx-auto">
@@ -24,7 +25,7 @@ const 公众号 = `${base}images/公众号/93737850c43752445459bb32d86c2283.png`
 
         <div class="grid grid-cols-2 max-md:grid-cols-1 gap-6 max-w-[800px] mx-auto">
           <!-- CNTA 总群 -->
-          <div class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
             <div class="mb-4 mx-auto flex justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
             </div>
@@ -39,10 +40,10 @@ const 公众号 = `${base}images/公众号/93737850c43752445459bb32d86c2283.png`
                 class="w-full h-full object-contain"
               />
             </div>
-          </div>
+          </TiltCard>
 
           <!-- 志愿队 -->
-          <div class="border border-border rounded-sm p-8 text-center">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
             <div class="mb-4 mx-auto flex justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
             </div>
@@ -53,10 +54,10 @@ const 公众号 = `${base}images/公众号/93737850c43752445459bb32d86c2283.png`
             <div class="w-[160px] h-[160px] rounded-md mx-auto flex items-center justify-center text-sm text-text-muted border border-border">
               二维码占位
             </div>
-          </div>
+          </TiltCard>
 
           <!-- 技术部 -->
-          <div class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
             <div class="mb-4 mx-auto flex justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
             </div>
@@ -67,10 +68,10 @@ const 公众号 = `${base}images/公众号/93737850c43752445459bb32d86c2283.png`
             <div class="w-[160px] h-[160px] rounded-md mx-auto flex items-center justify-center text-sm text-text-muted border border-border">
               二维码占位
             </div>
-          </div>
+          </TiltCard>
 
           <!-- 微信公众号 -->
-          <div class="border border-border rounded-sm p-8 text-center">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
             <div class="mb-4 mx-auto flex justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
             </div>
@@ -85,7 +86,7 @@ const 公众号 = `${base}images/公众号/93737850c43752445459bb32d86c2283.png`
                 class="w-full h-full object-contain"
               />
             </div>
-          </div>
+          </TiltCard>
         </div>
       </div>
     </section>
