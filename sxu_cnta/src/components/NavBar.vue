@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Sun, Moon } from '@lucide/vue'
 import { inject, ref } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 
@@ -31,7 +32,18 @@ function closeMenu() {
 </script>
 
 <template>
-  <nav class="fixed top-0 left-0 right-0 h-16 bg-[#faf7f2] dark:bg-neutral-900 border-b border-border dark:border-neutral-700 z-50">
+  <nav
+    class="fixed top-0 left-0 right-0 h-16 z-50"
+    :style="{
+      backgroundColor: theme?.isDark.value ? 'rgba(18,20,26,0.85)' : 'rgba(250,247,242,0.85)',
+      backdropFilter: 'blur(8px)',
+      WebkitBackdropFilter: 'blur(8px)',
+      borderBottom: '1px solid var(--color-border)',
+      boxShadow: theme?.isDark.value
+        ? '0.36px 0.48px 0.6px -0.94px rgba(0,0,0,0.4), 1.09px 1.45px 1.81px -1.88px rgba(0,0,0,0.35), 2.87px 3.83px 4.79px -2.81px rgba(0,0,0,0.3), 9px 12px 15px -3.75px rgba(0,0,0,0.15)'
+        : '0.36px 0.48px 0.6px -0.94px rgba(0,0,0,0.06), 1.09px 1.45px 1.81px -1.88px rgba(0,0,0,0.05), 2.87px 3.83px 4.79px -2.81px rgba(0,0,0,0.04), 9px 12px 15px -3.75px rgba(0,0,0,0.02)'
+    }"
+  >
     <div class="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
       <RouterLink to="/" class="flex items-center gap-2.5 text-lg font-bold text-text dark:text-white no-underline" @click="closeMenu">
         <img class="w-8 h-8 object-contain" src="/logo.png" alt="CNTA Logo" />
@@ -44,8 +56,8 @@ function closeMenu() {
           v-for="item in navItems"
           :key="item.path"
           :to="item.path"
-          class="px-4 py-1.5 text-[15px] font-medium text-text-secondary dark:text-gray-300 no-underline hover:text-text dark:hover:text-white transition-colors"
-          :class="{ '!text-text dark:!text-white underline underline-offset-[6px]': isActive(item.path) }"
+          class="px-4 py-1.5 text-[15px] font-medium text-text-secondary dark:text-gray-300 no-underline hover:text-text dark:hover:text-white transition-colors rounded-md"
+          :class="{ '!text-text dark:!text-white bg-surface-hover dark:bg-surface-hover': isActive(item.path) }"
           @click="closeMenu"
         >
           {{ item.label }}
@@ -55,25 +67,11 @@ function closeMenu() {
         <button
           v-if="theme"
           @click="theme.toggleTheme()"
-          class="ml-3 w-9 h-9 flex items-center justify-center rounded-lg text-text-muted dark:text-gray-400 hover:text-text dark:hover:text-white hover:bg-bg-alt dark:hover:bg-neutral-700 transition-all"
+          class="ml-3 w-9 h-9 flex items-center justify-center rounded-lg text-text-muted dark:text-gray-400 hover:text-text dark:hover:text-white hover:bg-surface-hover dark:hover:bg-surface-hover transition-all"
           :title="theme.isDark.value ? '切换至浅色模式' : '切换至深色模式'"
         >
-          <!-- Sun icon (shown in dark mode, click to switch to light) -->
-          <svg v-if="theme.isDark.value" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-          <!-- Moon icon (shown in light mode, click to switch to dark) -->
-          <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
+          <Sun v-if="theme.isDark.value" :size="20" />
+          <Moon v-else :size="20" />
         </button>
       </div>
 
@@ -101,15 +99,21 @@ function closeMenu() {
 
     <!-- Mobile menu -->
     <div
-      class="md:hidden fixed top-16 left-0 right-0 bg-[#faf7f2] dark:bg-neutral-900 border-b border-border dark:border-neutral-700 flex flex-col px-6 py-4 gap-1 transition-all duration-200"
+      class="md:hidden fixed top-16 left-0 right-0 flex flex-col px-6 py-4 gap-1 transition-all duration-200"
+      :style="{
+        backgroundColor: theme?.isDark.value ? 'rgba(18,20,26,0.95)' : 'rgba(250,247,242,0.95)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: '1px solid var(--color-border)',
+      }"
       :class="menuOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'"
     >
       <RouterLink
         v-for="item in navItems"
         :key="item.path"
         :to="item.path"
-        class="w-full px-4 py-3 text-[17px] font-medium text-text-secondary dark:text-gray-300 no-underline hover:text-text dark:hover:text-white"
-        :class="{ '!text-text dark:!text-white underline underline-offset-[6px]': isActive(item.path) }"
+        class="w-full px-4 py-3 text-[17px] font-medium text-text-secondary dark:text-gray-300 no-underline hover:text-text dark:hover:text-white rounded-md"
+        :class="{ '!text-text dark:!text-white bg-surface-hover dark:bg-surface-hover': isActive(item.path) }"
         @click="closeMenu"
       >
         {{ item.label }}
@@ -118,18 +122,10 @@ function closeMenu() {
       <button
         v-if="theme"
         @click="theme.toggleTheme(); closeMenu()"
-        class="w-full px-4 py-3 text-left text-[17px] font-medium text-text-secondary dark:text-gray-300 hover:text-text dark:hover:text-white transition-colors flex items-center gap-2"
+        class="w-full px-4 py-3 text-left text-[17px] font-medium text-text-secondary dark:text-gray-300 hover:text-text dark:hover:text-white transition-colors flex items-center gap-2 rounded-md"
       >
-        <svg v-if="theme.isDark.value" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"/>
-          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-        </svg>
-        <svg v-else width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
+        <Sun v-if="theme.isDark.value" :size="18" />
+        <Moon v-else :size="18" />
         {{ theme.isDark.value ? '浅色模式' : '深色模式' }}
       </button>
     </div>

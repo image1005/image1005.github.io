@@ -4,42 +4,81 @@
 
 @theme {
   --font-sans: 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', system-ui, -apple-system, sans-serif;
-  --color-text: #1a1a1a;
-  --color-text-secondary: #5c5c5c;
-  --color-text-muted: #8a8a8a;
+
+  --color-text: #2c2c2c;
+  --color-text-secondary: #6b6b6b;
+  --color-text-muted: #9a9a9a;
+  --color-text-dim: #b8b8b8;
   --color-border: #e0dbd2;
   --color-border-strong: #d0cbc2;
   --color-bg: #f5f0e8;
   --color-bg-alt: #ede6da;
+  --color-surface: #faf7f2;
+  --color-surface-alt: #f5f0e8;
+  --color-surface-hover: #f0ebe0;
+  --color-surface-float: #ffffff;
+}
+
+.dark {
+  --color-text: #e5e5e5;
+  --color-text-secondary: #8890a0;
+  --color-text-muted: #6b7380;
+  --color-text-dim: #4a4f5a;
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-strong: rgba(255, 255, 255, 0.10);
+  --color-bg: #080808;
+  --color-bg-alt: #0a0a0a;
+  --color-surface: #12141a;
+  --color-surface-alt: #0e1015;
+  --color-surface-hover: #1a1c24;
+  --color-surface-float: #181a20;
 }
 
 body {
   font-family: var(--font-sans);
   color: var(--color-text);
-  background: #faf7f2;
+  background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 纸张纹理覆盖层 */
+.dark body {
+  background: var(--color-bg);
+}
+
+::selection {
+  color: var(--color-surface-float);
+  background: rgba(13, 99, 248, 0.6);
+}
+
+/* 微点阵纹理（模拟纸张微观凹凸） */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background-image: radial-gradient(transparent 1px, rgba(0, 0, 0, 0.025) 1px);
+  background-size: 4px 4px;
+}
+
+.dark body::before {
+  background-image: radial-gradient(transparent 1px, rgba(255, 255, 255, 0.015) 1px);
+}
+
+/* SVG 纸张纤维噪声纹理 */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.35;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.25;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
 }
 
-.dark body,
-body.dark {
-  background: #000;
-  color: #e5e5e5;
-}
-
 .dark body::after {
-  display: none;
+  opacity: 0.08;
 }
