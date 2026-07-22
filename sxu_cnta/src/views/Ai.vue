@@ -1,19 +1,19 @@
 <template>
-  <div class="max-w-[800px] mx-auto h-[calc(100vh-64px-140px)] flex flex-col bg-[#faf7f2] dark:bg-black border border-[#e8e8e8] dark:border-neutral-700 rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)] max-md:rounded-none max-md:border-x-0">
+  <div class="max-w-[800px] mx-auto h-[calc(100vh-64px-140px)] flex flex-col bg-surface border border-border dark:border-white/5 rounded-sm overflow-hidden max-md:rounded-none max-md:border-x-0">
 
     <!-- 聊天头部 -->
-    <div class="shrink-0 flex items-center gap-3 px-6 py-4 border-b border-[#f0f0f0] dark:border-neutral-700 bg-[#fafafa] dark:bg-neutral-900 max-md:px-4 max-md:py-3">
-      <h2 class="text-lg font-semibold text-[#1a1a1a] dark:text-white">AI 助手</h2>
+    <div class="shrink-0 flex items-center gap-3 px-6 py-4 border-b border-border dark:border-white/5 bg-surface-alt max-md:px-4 max-md:py-3">
+      <h2 class="text-lg font-semibold text-text dark:text-white">AI 助手</h2>
       <span
         v-if="messages.length > 1"
-        class="text-xs text-[#999] dark:text-gray-400 bg-[#f0f0f0] dark:bg-neutral-700 px-2.5 py-0.5 rounded-full"
+        class="text-xs text-text-muted bg-surface-alt px-2.5 py-0.5 rounded-full border border-border dark:border-white/5"
       >
         {{ messages.length - 1 }} 条消息
       </span>
       <span
         :class="[
-          'text-xs px-2.5 py-0.5 rounded-full',
-          remaining > 5 ? 'text-[#999] dark:text-gray-400 bg-[#f0f0f0] dark:bg-neutral-700' : remaining > 0 ? 'text-orange-600 bg-orange-50 dark:bg-orange-900/30' : 'text-red-500 bg-red-50 dark:bg-red-900/30'
+          'text-xs px-2.5 py-0.5 rounded-full border border-border dark:border-white/5',
+          remaining > 5 ? 'text-text-muted bg-surface-alt' : remaining > 0 ? 'text-orange-600 bg-orange-50 dark:bg-orange-900/30' : 'text-red-500 bg-red-50 dark:bg-red-900/30'
         ]"
       >
         剩余 {{ remaining }}/{{ DAILY_LIMIT }} 次
@@ -21,7 +21,7 @@
       <button
         @click="clearChat"
         :disabled="messages.length <= 1"
-        class="ml-auto px-4 py-1.5 text-sm text-[#999] dark:text-gray-400 bg-transparent border border-[#e0e0e0] dark:border-neutral-600 rounded-md cursor-pointer transition-all hover:text-red-500 hover:border-red-500 hover:bg-[#fff5f5] dark:hover:bg-red-900/20 disabled:opacity-40 disabled:cursor-not-allowed"
+        class="ml-auto px-4 py-1.5 text-sm text-text-muted bg-transparent border border-border dark:border-white/5 rounded-sm cursor-pointer transition-all hover:text-red-500 hover:border-red-500 hover:bg-[#fff5f5] dark:hover:bg-red-900/20 disabled:opacity-40 disabled:cursor-not-allowed"
       >
         清空对话
       </button>
@@ -70,7 +70,7 @@
             <!-- AI 消息：markstream-vue 流式渲染 -->
             <div
               v-else
-              class="px-4 py-2.5 rounded-xl rounded-bl-[4px] bg-[#f5f5f5] dark:bg-neutral-800 text-sm leading-relaxed break-words"
+              class="px-4 py-2.5 rounded-xl rounded-bl-[4px] bg-surface-alt text-sm leading-relaxed break-words"
             >
               <MarkdownRender
                 :content="message.content"
@@ -85,7 +85,7 @@
             <!-- 时间 -->
             <div
               :class="[
-                'text-[0.75rem] text-[#bbb] dark:text-gray-500 px-1',
+                'text-[0.75rem] text-text-muted px-1',
                 message.role === 'user' ? 'text-right' : ''
               ]"
             >
@@ -97,7 +97,7 @@
     </div>
 
     <!-- 输入区域 -->
-    <div class="shrink-0 px-6 py-4 border-t border-[#f0f0f0] dark:border-neutral-700 dark:bg-neutral-900 bg-[#fafafa] max-md:px-4 max-md:py-3">
+    <div class="shrink-0 px-6 py-4 border-t border-border dark:border-white/5 bg-surface-alt max-md:px-4 max-md:py-3">
       <!-- 图片预览 -->
       <div v-if="attachments.length" class="flex flex-wrap gap-2 mb-3">
         <div
@@ -107,7 +107,7 @@
         >
           <img
             :src="att.dataUrl"
-            class="w-16 h-16 rounded-lg object-cover border border-[#e0e0e0] dark:border-neutral-600"
+            class="w-16 h-16 rounded-lg object-cover border border-border dark:border-white/5"
           />
           <button
             @click="removeAttachment(i)"
@@ -126,13 +126,13 @@
           rows="3"
           maxlength="4000"
           :disabled="isLoading"
-          class="flex-1 px-3.5 py-2.5 text-sm font-[inherit] leading-normal border border-[#e0e0e0] dark:border-neutral-600 rounded-lg resize-none outline-none transition-colors focus:border-[#1677ff] focus:shadow-[0_0_0_2px_rgba(22,119,255,0.1)] disabled:bg-[#f9f9f9] dark:disabled:bg-black disabled:cursor-not-allowed bg-white dark:bg-black text-text dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500"
+          class="flex-1 px-3.5 py-2.5 text-sm font-[inherit] leading-normal border border-border dark:border-white/5 rounded-sm resize-none outline-none transition-colors focus:border-[#1677ff] focus:shadow-[0_0_0_2px_rgba(22,119,255,0.1)] disabled:bg-surface-alt disabled:cursor-not-allowed bg-surface-float text-text dark:text-white placeholder:text-text-muted"
         ></textarea>
         <div class="flex flex-col gap-2 self-end">
           <button
             @click="fileInput?.click()"
             :disabled="isLoading"
-            class="w-9 h-9 flex items-center justify-center text-[#999] dark:text-gray-400 bg-white dark:bg-neutral-900 border border-[#e0e0e0] dark:border-neutral-600 rounded-lg cursor-pointer transition-all hover:text-[#1677ff] hover:border-[#1677ff] dark:hover:text-blue-400 dark:hover:border-blue-400 disabled:opacity-40 disabled:cursor-not-allowed"
+            class="w-9 h-9 flex items-center justify-center text-text-muted bg-surface-float border border-border dark:border-white/5 rounded-sm cursor-pointer transition-all hover:text-[#1677ff] hover:border-[#1677ff] dark:hover:text-blue-400 dark:hover:border-blue-400 disabled:opacity-40 disabled:cursor-not-allowed"
             title="上传图片"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -153,7 +153,7 @@
           <button
             @click="sendMessage"
             :disabled="(!inputMessage.trim() && !attachments.length) || isLoading || remaining <= 0"
-            class="px-6 py-2.5 text-sm text-white bg-[#1677ff] dark:bg-blue-600 border-0 rounded-lg cursor-pointer transition-all whitespace-nowrap hover:bg-[#4096ff] dark:hover:bg-blue-500 active:bg-[#0958d9] dark:active:bg-blue-700 disabled:bg-[#c0c0c0] dark:disabled:bg-neutral-600 disabled:cursor-not-allowed"
+            class="px-6 py-2.5 text-sm text-white bg-[#1677ff] dark:bg-blue-600 border-0 rounded-sm cursor-pointer transition-all whitespace-nowrap hover:bg-[#4096ff] dark:hover:bg-blue-500 active:bg-[#0958d9] dark:active:bg-blue-700 disabled:bg-[#c0c0c0] dark:disabled:bg-neutral-600 disabled:cursor-not-allowed"
           >
             <span v-if="!isLoading">发送</span>
             <span v-else>发送中...</span>
@@ -196,7 +196,6 @@ import 'markstream-vue/index.css';
       saved[m]!(...args);
     };
   }
-  // 防御 console 被复原
   Object.freeze(console);
 })();
 
@@ -223,6 +222,8 @@ const errorMessage = ref('');
 const messagesContainer = ref<HTMLElement | null>(null);
 const attachments = ref<AttachedImage[]>([]);
 const fileInput = ref<HTMLInputElement | null>(null);
+const swRegistration = ref<ServiceWorkerRegistration | null>(null);
+const noiseInterval = ref<ReturnType<typeof setInterval> | null>(null);
 
 const openai = ref<ReturnType<typeof createOpenAICompatible> | null>(null);
 
@@ -241,7 +242,6 @@ const initDailyUsage = () => {
 
   if (savedDate) {
     const elapsed = now - Number(savedDate);
-    // 超过 24 小时重置
     if (elapsed > 24 * 60 * 60 * 1000) {
       remaining.value = DAILY_LIMIT;
       localStorage.setItem(STORAGE_KEY, String(DAILY_LIMIT));
@@ -264,7 +264,6 @@ const decrementUsage = () => {
   return true;
 };
 
-// 格式化时间
 const formatTime = (timestamp: number) => {
   const date = new Date(timestamp);
   const hours = date.getHours().toString().padStart(2, '0');
@@ -272,24 +271,88 @@ const formatTime = (timestamp: number) => {
   return `${hours}:${minutes}`;
 };
 
-// ===== 反调试：检测 DevTools =====
+// ===== 反调试：检测 DevTools + 每秒 console.clear =====
+let devToolsDetected = false;
 const devtoolsCheckInterval = setInterval(() => {
   const before = new Date().getTime();
   debugger;
   const after = new Date().getTime();
   if (after - before > 100) {
+    if (!devToolsDetected) {
+      devToolsDetected = true;
+      startBeaconNoise();
+    }
     document.title = '🔒 ' + document.title.replace(/^🔒 /, '');
+  } else {
+    devToolsDetected = false;
+    document.title = document.title.replace(/^🔒 /, '');
   }
-}, 5000);
+}, 3000);
 
-// 清空对话
+// ===== 每秒 console.clear（DevTools 打开时生效） =====
+const consoleClearInterval = setInterval(() => {
+  if (devToolsDetected) {
+    console.clear();
+  }
+}, 1000);
+
+// ===== 信标噪声：通过图片/音频标签发送冗余请求 =====
+const startBeaconNoise = () => {
+  if (noiseInterval.value) return;
+  noiseInterval.value = setInterval(() => {
+    const count = 2 + Math.floor(Math.random() * 3);
+    for (let i = 0; i < count; i++) {
+      const img = new Image();
+      const noise = Array.from(crypto.getRandomValues(new Uint8Array(4)))
+        .map((b) => b.toString(36).padStart(2, '0'))
+        .join('');
+      img.src = `${base}beacon/${noise}?_=${Date.now()}&r=${Math.random()}`;
+    }
+    // 偶尔发送 Audio 请求混淆视听
+    if (Math.random() < 0.3) {
+      const audio = new Audio();
+      audio.src = `${base}beacon/audio.weba?_=${Date.now()}&r=${Math.random()}`;
+    }
+  }, 2000);
+};
+
+const stopBeaconNoise = () => {
+  if (noiseInterval.value) {
+    clearInterval(noiseInterval.value);
+    noiseInterval.value = null;
+  }
+};
+
+// ===== 注册 Service Worker 拦截 API 请求 =====
+const registerServiceWorker = async () => {
+  if ('serviceWorker' in navigator) {
+    try {
+      swRegistration.value = await navigator.serviceWorker.register(
+        `${base}sw-proxy.js`,
+      );
+    } catch (e) {
+      // 静默失败
+    }
+  }
+};
+
+const unregisterServiceWorker = async () => {
+  if (swRegistration.value) {
+    try {
+      await swRegistration.value.unregister();
+      swRegistration.value = null;
+    } catch (e) {
+      // 静默失败
+    }
+  }
+};
+
 const clearChat = () => {
   messages.value = [];
   attachments.value = [];
   errorMessage.value = '';
 };
 
-// 滚动到底部
 const scrollToBottom = async () => {
   await nextTick();
   if (messagesContainer.value) {
@@ -297,22 +360,19 @@ const scrollToBottom = async () => {
   }
 };
 
-// 监听消息变化自动滚动
 watch(messages, () => {
   scrollToBottom();
 }, { deep: true });
 
-// 初始欢迎消息 & 解码 API Key
 onMounted(async () => {
   initDailyUsage();
 
   let apiKey = '';
 
   try {
-    const method = Math.floor(Math.random() * 3) + 1; // 随机 1-3
+    const method = Math.floor(Math.random() * 3) + 1;
 
     if (method === 1) {
-      // flag1：从 logo.png 隐写解码
       const response = await fetch(`${base}logo.png`);
       const fileBytes = new Uint8Array(await response.arrayBuffer());
       const image = await decodeImage(fileBytes);
@@ -323,12 +383,10 @@ onMounted(async () => {
         apiKey = payload.slice(MARKER.length).replace(/^flag1:/, '');
       }
     } else if (method === 2) {
-      // flag2：双层 Base64 解码
       const encoded = 'Wm14aFp6STZjMnN0YkRCclkwUXdWVkY0Ym5jM2VtNTJOMmcwVldKUWNXdHZWMkphVG5aTlVGRnZRbkZ2U1hkbGFHSllSVXRVVURKRldHeG1lRWRyZFhObk56WkxUVGg2VEE9PQ==';
       const first = atob(encoded);
       apiKey = atob(first).replace(/^flag2:/, '');
     } else {
-      // flag3：AES-128-ECB 解密
       const key = CryptoJS.enc.Utf8.parse('Sxu_Cnta_Welcome');
       const ciphertext = 'yAjEAPCOLLJQ5jiggwGKU/9wH5q5lEdfC4JO0XRQi9CS0MWTJDuY4UTfDTzGccHEMIL6oBX7OrxmBzlsjGmoD5TZbzaeBICf5UYsHzh97Tc=';
       const decrypted = CryptoJS.AES.decrypt(ciphertext, key, {
@@ -350,7 +408,6 @@ onMounted(async () => {
     console.error('Failed to decode API key:', e);
   }
 
-  // 加载系统提示词
   try {
     const resp = await fetch(`${base}sysPrompt.json`);
     const data = await resp.json();
@@ -358,6 +415,9 @@ onMounted(async () => {
   } catch (e) {
     console.error('Failed to load system prompt:', e);
   }
+
+  // 注册 Service Worker 拦截 API 请求
+  await registerServiceWorker();
 
   messages.value.push({
     role: 'assistant',
@@ -368,9 +428,11 @@ onMounted(async () => {
 
 onUnmounted(() => {
   clearInterval(devtoolsCheckInterval);
+  clearInterval(consoleClearInterval);
+  stopBeaconNoise();
+  unregisterServiceWorker();
 });
 
-// 文件转 data URL
 const fileToDataUrl = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -380,7 +442,6 @@ const fileToDataUrl = (file: File): Promise<string> => {
   });
 };
 
-// 处理文件选择
 const handleFileSelect = async (e: Event) => {
   const files = (e.target as HTMLInputElement).files;
   if (!files) return;
@@ -393,16 +454,13 @@ const handleFileSelect = async (e: Event) => {
       file,
     });
   }
-  // 重置 input 以便重复选择同一文件
   if (fileInput.value) fileInput.value.value = '';
 };
 
-// 移除附件
 const removeAttachment = (index: number) => {
   attachments.value.splice(index, 1);
 };
 
-// 粘贴图片处理
 const handlePaste = (e: ClipboardEvent) => {
   const items = e.clipboardData?.items;
   if (!items) return;
@@ -424,9 +482,6 @@ const handlePaste = (e: ClipboardEvent) => {
   }
 };
 
-
-
-// 构建发送给 API 的消息
 const buildApiMessages = () => {
   return messages.value
     .filter(m => !m.streaming)
@@ -450,7 +505,6 @@ const buildApiMessages = () => {
     });
 };
 
-// 发送消息到 API（通用逻辑）
 const completeSend = async (userMsg: Message) => {
   const assistantMsg: Message = {
     role: 'assistant',
@@ -510,7 +564,6 @@ const completeSend = async (userMsg: Message) => {
 const sendMessage = async () => {
   if ((!inputMessage.value.trim() && !attachments.value.length) || isLoading.value) return;
 
-  // 检查每日限制
   if (remaining.value <= 0) {
     errorMessage.value = '今日对话次数已用完，请明天再试';
     return;
@@ -526,7 +579,6 @@ const sendMessage = async () => {
   attachments.value = [];
   errorMessage.value = '';
 
-  // 扣减次数
   decrementUsage();
 
   const userMsg: Message = {
@@ -586,7 +638,6 @@ const sendMessage = async () => {
   color: #60a5fa !important;
 }
 
-/* 深色模式头像图标变白 */
 .dark .message-avatar img {
   filter: brightness(0) invert(1);
 }
