@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[800px] mx-auto h-[calc(100vh-64px-140px)] flex flex-col bg-white dark:bg-black border border-[#e8e8e8] dark:border-neutral-700 rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)] max-md:rounded-none max-md:border-x-0">
+  <div class="max-w-[800px] mx-auto h-[calc(100vh-64px-140px)] flex flex-col bg-[#faf7f2] dark:bg-black border border-[#e8e8e8] dark:border-neutral-700 rounded-xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.06)] max-md:rounded-none max-md:border-x-0">
 
     <!-- 聊天头部 -->
     <div class="shrink-0 flex items-center gap-3 px-6 py-4 border-b border-[#f0f0f0] dark:border-neutral-700 bg-[#fafafa] dark:bg-neutral-900 max-md:px-4 max-md:py-3">
@@ -40,7 +40,7 @@
           <div
             :class="[
               'w-9 h-9 rounded-full flex items-center justify-center shrink-0',
-              message.role === 'user' ? 'bg-[#e8f4ff] dark:bg-blue-900/30' : 'bg-[#f0fff4] dark:bg-green-900/30'
+              message.role === 'user' ? 'bg-[#e8f4ff] dark:bg-white' : 'bg-[#f0fff4] dark:bg-white'
             ]"
           >
             <img

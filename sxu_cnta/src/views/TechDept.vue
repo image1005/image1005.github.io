@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ImageCarousel from '@/components/ImageCarousel.vue'
+import TiltCard from '@/components/ui/BeUiTiltCard.vue'
 
 const base = import.meta.env.BASE_URL
 
@@ -51,7 +52,7 @@ const 学习资源 = [
 <template>
   <div class="tech-dept">
     <!-- Page Header -->
-    <section class="py-[120px] max-md:py-[100px] text-center bg-white dark:bg-black border-b border-border dark:border-neutral-700">
+    <section class="py-[120px] max-md:py-[100px] text-center bg-[#faf7f2] dark:bg-black border-b border-border dark:border-neutral-700">
       <div class="max-w-[1200px] mx-auto px-6">
         <h1 class="text-[2.4rem] max-md:text-[1.8rem] font-extrabold mb-4 text-text dark:text-white">技术部</h1>
         <p class="text-lg text-text-secondary dark:text-gray-400 max-w-[600px] mx-auto">
@@ -67,7 +68,7 @@ const 学习资源 = [
         <p class="text-base text-text-secondary dark:text-gray-400 text-center mb-12 max-w-[640px] mx-auto">三大方向，全面覆盖</p>
 
         <div class="grid grid-cols-3 max-md:grid-cols-1 gap-6">
-          <div class="border border-border dark:border-neutral-700 rounded-sm p-8">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8">
             <div class="mb-4">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
             </div>
@@ -76,9 +77,9 @@ const 学习资源 = [
               CTF竞赛训练、漏洞挖掘与复现、企业级安全攻防实践。
             </p>
             <span class="inline-block px-2.5 py-0.5 text-xs font-medium border border-border dark:border-neutral-700 rounded-sm bg-bg dark:bg-neutral-800 text-text-secondary dark:text-gray-400">CTF</span>
-          </div>
+          </TiltCard>
 
-          <div class="border border-border rounded-sm p-8">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8">
             <div class="mb-4">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
@@ -87,9 +88,9 @@ const 学习资源 = [
               探索Web前端、Java后端等前沿技术的应用与落地。
             </p>
             <span class="inline-block px-2.5 py-0.5 text-xs font-medium border border-border dark:border-neutral-700 rounded-sm bg-bg dark:bg-neutral-800 text-text-secondary dark:text-gray-400">开发</span>
-          </div>
+          </TiltCard>
 
-          <div class="border border-border rounded-sm p-8">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8">
             <div class="mb-4">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><path d="M6 6h.01"/><path d="M6 18h.01"/></svg>
             </div>
@@ -97,7 +98,7 @@ const 学习资源 = [
             <p class="text-[15px] leading-relaxed text-text-secondary dark:text-gray-400">
               负责校园网络服务维护、Linux服务器集群管理与自动化运维。
             </p>
-          </div>
+          </TiltCard>
         </div>
       </div>
     </section>
@@ -152,27 +153,27 @@ const 学习资源 = [
         <p class="text-base text-text-secondary dark:text-gray-400 text-center mb-12 max-w-[640px] mx-auto">以赛促学，挑战自我</p>
 
         <div class="grid grid-cols-2 max-md:grid-cols-1 gap-6 mb-12">
-          <div class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
             <div class="mb-4 mx-auto flex justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <h3 class="text-lg font-semibold mb-2 text-text dark:text-white">全国大学生信息安全竞赛</h3>
             <p class="text-[15px] text-text-secondary dark:text-gray-400">CISCN</p>
-          </div>
+          </TiltCard>
 
-          <div class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
             <div class="mb-4 mx-auto flex justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
             <h3 class="text-lg font-semibold mb-2 text-text dark:text-white">春秋杯网络安全联赛</h3>
             <p class="text-[15px] text-text-secondary dark:text-gray-400">与全国顶尖选手同台竞技</p>
-          </div>
+          </TiltCard>
         </div>
 
         <!-- 近期竞赛成果 -->
         <h3 class="text-[1.3rem] font-bold text-center mb-8 text-text dark:text-white">近期竞赛成果</h3>
         <div class="grid grid-cols-2 max-md:grid-cols-1 gap-6 mb-12">
-          <div class="border border-border dark:border-neutral-700 rounded-sm p-8">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8">
             <h3 class="text-lg font-semibold mb-2 text-text dark:text-white">第三届"熵密杯"密码安全挑战赛</h3>
             <p class="text-[15px] leading-relaxed text-text-secondary dark:text-gray-400">
               与清华大学、中山大学等密码学强校同台竞技，展现专业实力。
@@ -180,9 +181,9 @@ const 学习资源 = [
             <p class="mt-3 text-sm font-medium text-text dark:text-white">
               技术亮点：密码算法深度解析能力
             </p>
-          </div>
+          </TiltCard>
 
-          <div class="border border-border dark:border-neutral-700 rounded-sm p-8">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8">
             <h3 class="text-lg font-semibold mb-2 text-text dark:text-white">首届全国大学生AI安全竞赛</h3>
             <p class="text-[15px] leading-relaxed text-text-secondary dark:text-gray-400">
               在首届全国大学生人工智能安全竞赛中，我院学子斩获全国二等奖2项、三等奖1项。
@@ -190,7 +191,7 @@ const 学习资源 = [
             <p class="mt-3 text-sm font-medium text-text dark:text-white">
               核心技术挑战：参与AI安全相关的核心技术攻关
             </p>
-          </div>
+          </TiltCard>
         </div>
 
         <!-- 竞赛风采 -->

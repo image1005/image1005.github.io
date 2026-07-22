@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ImageCarousel from '@/components/ImageCarousel.vue'
+import TiltCard from '@/components/ui/BeUiTiltCard.vue'
 
 const base = import.meta.env.BASE_URL
 
@@ -31,7 +32,7 @@ const 网络安全宣讲周 = [
 <template>
   <div class="volunteer-team">
     <!-- Page Header -->
-    <section class="py-[120px] max-md:py-[100px] text-center bg-white dark:bg-black border-b border-border dark:border-neutral-700">
+    <section class="py-[120px] max-md:py-[100px] text-center bg-[#faf7f2] dark:bg-black border-b border-border dark:border-neutral-700">
       <div class="max-w-[1200px] mx-auto px-6">
         <h1 class="text-[2.4rem] max-md:text-[1.8rem] font-extrabold mb-4 text-text dark:text-white">志愿队</h1>
         <p class="text-lg text-text-secondary dark:text-gray-400 max-w-[600px] mx-auto">
@@ -64,7 +65,7 @@ const 网络安全宣讲周 = [
 
         <div class="grid grid-cols-2 max-md:grid-cols-1 gap-6">
           <!-- 项目部 -->
-          <div class="border border-border dark:border-neutral-700 rounded-sm p-8 bg-white dark:bg-black">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8 bg-white dark:bg-black">
             <div class="mb-4">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 015 5c0 3-4 8-5 8s-5-5-5-8a5 5 0 015-5z"/><circle cx="12" cy="7" r="1.5"/></svg>
             </div>
@@ -80,10 +81,10 @@ const 网络安全宣讲周 = [
                 <strong class="text-text dark:text-white">加入项目部，你能收获：</strong>系统学习活动策划方法论，提升沟通能力和组织协调能力，增强逻辑思维和细节把控能力，掌握推文撰写、图片编辑和新媒体运营等实用技能。
               </p>
             </div>
-          </div>
+          </TiltCard>
 
           <!-- 活动部 -->
-          <div class="border border-border dark:border-neutral-700 rounded-sm p-8 bg-white dark:bg-black">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8 bg-white dark:bg-black">
             <div class="mb-4">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
             </div>
@@ -99,7 +100,7 @@ const 网络安全宣讲周 = [
                 <strong class="text-text dark:text-white">在活动部，你将收获：</strong>学习志愿者管理技巧，锻炼应急处理能力和应变能力，在与师生的直接互动中收获满满的成就感和幸福感。
               </p>
             </div>
-          </div>
+          </TiltCard>
         </div>
       </div>
     </section>
@@ -111,7 +112,7 @@ const 网络安全宣讲周 = [
         <p class="text-base text-text-secondary dark:text-gray-400 text-center mb-12 max-w-[640px] mx-auto">一场活动的完整旅程</p>
 
         <div class="grid grid-cols-3 max-md:grid-cols-1 gap-6">
-          <div class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
             <div class="mb-4 mx-auto flex justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
             </div>
@@ -119,9 +120,9 @@ const 网络安全宣讲周 = [
             <p class="text-[15px] leading-relaxed text-text-secondary dark:text-gray-400">
               项目部 "申报 + 定调"：挖掘校园数字需求，撰写规范志愿申报文件，对接学校、社区等平台，为志愿活动 "拿门票"。
             </p>
-          </div>
+          </TiltCard>
 
-          <div class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
             <div class="mb-4 mx-auto flex justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
@@ -129,9 +130,9 @@ const 网络安全宣讲周 = [
             <p class="text-[15px] leading-relaxed text-text-secondary dark:text-gray-400">
               活动部 "执行 + 落地"：招募培训志愿者，筹备物资，布置场地，确保活动顺利开展。
             </p>
-          </div>
+          </TiltCard>
 
-          <div class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8 text-center">
             <div class="mb-4 mx-auto flex justify-center">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
             </div>
@@ -139,7 +140,7 @@ const 网络安全宣讲周 = [
             <p class="text-[15px] leading-relaxed text-text-secondary dark:text-gray-400">
               项目部 "宣传 + 沉淀"：用推文记录志愿故事，运营公众号账号，让更多人看见数字志愿的价值。
             </p>
-          </div>
+          </TiltCard>
         </div>
       </div>
     </section>
@@ -175,7 +176,7 @@ const 网络安全宣讲周 = [
         </div>
 
         <div class="grid grid-cols-2 max-md:grid-cols-1 gap-6">
-          <div class="border border-border dark:border-neutral-700 rounded-sm p-8">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8">
             <h3 class="text-lg font-semibold mb-3 text-text dark:text-white">
               <svg class="inline-block mr-1 align-middle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
               服务内容
@@ -202,9 +203,9 @@ const 网络安全宣讲周 = [
                 一对一技术咨询
               </li>
             </ul>
-          </div>
+          </TiltCard>
 
-          <div class="border border-border rounded-sm p-8">
+          <TiltCard class="border border-border dark:border-neutral-700 rounded-sm p-8">
             <h3 class="text-lg font-semibold mb-3">
               <svg class="inline-block mr-1 align-middle" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               服务时间
@@ -216,7 +217,7 @@ const 网络安全宣讲周 = [
             <p class="mt-3 text-sm text-text-secondary">
               活动持续至第16周，抓紧时间哦！
             </p>
-          </div>
+          </TiltCard>
         </div>
 
         <div class="text-center mt-10">
